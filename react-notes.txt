@@ -1,0 +1,35 @@
+
+React -
+  - Facebook
+  - [framework] or library?
+  - SPA - routing (Angular)? react-router-dom
+  - lightweight - fast
+  - most poular
+  - Vue is 3rd framework
+  - MVC - React is the V
+  - UI ureusable components
+  - JSX HTML within code return <html>data</html>
+  - virtual DOM (refresh elements without reloading DOM)
+  - popular in the industry
+  - one way data bindinbg immutable 
+  - Promises, data types, async 
+  - Array methods reduce, filter
+  - "fetch" API      
+
+  Libraries - jQuery, lodash
+
+Components can be crteated with Classes or Functions
+Function components with Hooks
+
+create-react-app
+
+Components
+ - state (open, closed), data, app state, global state (context api or Redux)  
+ - prior to 16.8 - functions were "dumb components" - couldn't hold state, 167.8 enabled hooks which enable state
+ - current version: 
+ -  
+
+ npm v18
+ react v18
+ angular v13
+
