@@ -33,3 +33,14 @@ Components
  react v18
  angular v13
 
+ES7 React library
+rafc - react function 
+
+JSX - interpolated JS in HTML
+class - className
+for - htmlFor
+has to reurn single root element
+no longer need: import React;
+
+* in line styles *
+<h1 style={{ color: 'red', backgroundColor: 'beige' }}>{title}</h1>
