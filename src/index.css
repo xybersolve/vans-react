@@ -97,6 +97,11 @@ h1 {
   cursor: pointer;
 }
 
+.task:focus {
+	outline-style: none;
+	box-shadow: none;
+	border-color: transparent; 
+}
 .task.complete {
   border-left: 8px solid green;
 }
@@ -104,8 +109,8 @@ h1 {
   border-left: 8px solid yellow; 
 }
 
-.unassigned {
-  border-left: 8px solid red; 
+.task.unassigned {
+  border-left: 8px solid #ccc; 
 }
 
 

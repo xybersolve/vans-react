@@ -1,3 +1,27 @@
+// Development Compile & serve
+npm run start 
+
+Quick Test of Build Assets
+ // build the static assets
+ npm run build
+ // install Static HTTP server
+ npm i -g serve 
+// run assets - with 'serve' static HTTP server
+// serve static "./build" assets on port 8000
+serve -s build -p 8000
+
+Notes: The React Dev Tools should be blue uinstead of orange on production biolds
+
+Mock REST JSON API Server - actually updates JSON 
+// Install locally for inclusiob in developemnt build 
+npm i json-server 
+// Create script
+"server" : "json-server db.json --watch --port 5000"
+// run it - will create db.json if it doesn;t yet exist
+npm run server
+
+
+
 
 React -
   - Facebook

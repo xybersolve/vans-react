@@ -1,44 +1,92 @@
 import './App.css';
 import Header from './components/Header'
 import Tasks from './components/Tasks';
+import AddTask from './components/AddTask';
 
-import { useState } from 'react'; 
+import { useState, useEffect } from 'react'; 
+
+
 
 const title = "Van Task Tracker";
 
 function App() {
-  const [tasks, setTasks] = useState([
-    {
-        id: 0,
-        text: 'Sound Proofing',
-        state: 3
+  const [showAddTask, setShowAddTask] = useState(false)
+  const [tasks, setTasks] = useState([])  
 
-    }, {
-        id: 1,
-        text: 'Insulation',
-        state: 2
-    }, {
-        id: 2,
-        text: 'Furring',
-        state: 1
-    }
-  ]);
+  useEffect(() => {
+    const getTasks = async () => {
+      let tasksFromServer = await fetchTasks()
+      setTasks(tasksFromServer)
+    } 
+    getTasks()
+  }, [])
 
-  const deleteTask = (id) => {
-    console.log('delete', id)
+  // rules for state change  
+  const changeState = (state) => {
+    return state === 3 ? 1 : state + 1;
+  } 
+
+  const fetchTasks = async () => {
+    const res = await fetch('http://localhost:5000/tasks')
+    const data = await res.json()
+    return data
+  }
+
+  const fetchTask = async (id) => {
+    const res = await fetch(`http://localhost:5000/tasks/${id}`)
+    const data = await res.json()
+    return data
+  }
+
+  const addTask = async (task) => {
+    const res = await fetch('http://localhost:5000/tasks', {
+      method: 'POST',
+      headers: {
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify(task) 
+    })
+    const data = await res.json()
+    setTasks([...tasks, data])
+    
+    // Pre-REST
+    //const id = Math.floor(Math.random() * 10000 ) + 1
+    //const newTask = { id, ...task} 
+    //setTasks([...tasks, newTask])
+  }
+ 
+  const deleteTask = async (id) => {
+    await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: 'DELETE'
+    })    
     setTasks(tasks.filter(task => task.id !== id))
   }
 
-  const toggleState = (id, state) => {
-    console.log('toggle', id, state);
+  const toggleState = async (id, state) => {
+    const newState = changeState(state);
+    const taskToToggle = await fetchTask(id)
+    const updatedTask = {...taskToToggle, state: newState}
+    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedTask)
+    })
+    const data = await res.json();
     // set state from passed in state (ahead of map function)
-    let newState = state === 3 ? 1 : state + 1;
+    //let newState = state === 3 ? 1 : state + 1;
     setTasks(tasks.map((task) => task.id === id ? {...task, state : newState} : task )) 
+
+
   }
 
   return (
     <div className="container">
-      <Header />
+      {/* <Profiler id="Navigation" onRender={callback}></Profiler> */}
+      <Header title={title}  onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
+       {/* && shorthand for ternary operator */}
+      {showAddTask &&  <AddTask onAdd={addTask} />}
       {tasks.length > 0 ?
       <Tasks 
         tasks={tasks}
