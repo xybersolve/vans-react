@@ -31,8 +31,9 @@ function App() {
 
   const toggleState = (id, state) => {
     console.log('toggle', id, state);
-    setTasks(tasks.map((task) => task.id === id ? 
-        state == 3 ? {...task, state = 0} : {...task, state = state + 1}))
+    // set state from passed in state (ahead of map function)
+    let newState = state === 3 ? 1 : state + 1;
+    setTasks(tasks.map((task) => task.id === id ? {...task, state : newState} : task )) 
   }
 
   return (

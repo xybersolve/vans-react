@@ -9,7 +9,6 @@ const Task = ( { task, onDelete, onToggleState }) => {
                 style={{ color: 'red', cursor: 'pointer' }} 
                 onClick={() => onDelete(task.id)}
             />
-            {task.state}
         </h3>
     </div>
   )
