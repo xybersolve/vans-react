@@ -24,4 +24,4 @@ $ serve -s build -p 8000
 - (OSX) In seperate terminal: $ open http://localhost:8000 
 - Open browser & go to: http://localhost:8000
 
-![Flowing Van](images/Flowing-Van-Blue-Transparent.jpg)
+![Flowing Van](images/Flowing-Van-Blue-Transparent.png)
