@@ -1,9 +1,5 @@
 import PropTypes from 'prop-types';
 
-const onClick = (e) => {
-    console.log('got onClick');
-}
- 
 const Button = ({ color, text, onClick }) => {
   return (
     <button 

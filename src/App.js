@@ -1,5 +1,8 @@
 import './App.css';
-import Header from './components/Header'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
+import Header from './components/Header';
+import About from './components/About';
+import Footer from './components/Footer';
 import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
 
@@ -76,24 +79,40 @@ function App() {
     const data = await res.json();
     // set state from passed in state (ahead of map function)
     //let newState = state === 3 ? 1 : state + 1;
-    setTasks(tasks.map((task) => task.id === id ? {...task, state : newState} : task )) 
-
-
+    setTasks(tasks.map((task) => task.id === id ? {...task, state : data.state} : task )) 
   }
 
   return (
-    <div className="container">
-      {/* <Profiler id="Navigation" onRender={callback}></Profiler> */}
-      <Header title={title}  onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
-       {/* && shorthand for ternary operator */}
-      {showAddTask &&  <AddTask onAdd={addTask} />}
-      {tasks.length > 0 ?
-      <Tasks 
-        tasks={tasks}
-        onDelete={deleteTask} 
-        onToggleState={toggleState}
-      /> : 'No tasks have been defined yet.'}
-    </div>
+    <Router>
+      <div className="container">
+        {/* <Profiler id="Navigation" onRender={callback}></Profiler> */}
+        <Header title={title}  
+                onAdd={() => setShowAddTask(!showAddTask)} 
+                showAdd={showAddTask} 
+        />
+        <Routes>
+          <Route
+             path="/"
+             element={
+              <>
+                {/* && shorthand for ternary operator */}
+                {showAddTask &&  <AddTask onAdd={addTask} />}
+                {tasks.length > 0 ?
+                <Tasks 
+                  tasks={tasks}
+                  onDelete={deleteTask} 
+                  onToggleState={toggleState}
+                /> : 'No tasks have been defined yet.'}
+                </>
+                }
+              /> 
+        <Route path='/about' element={<About />} />
+        </Routes>
+        <Footer />
+      </div>
+
+      </Router>
+   
   );
 }
 
