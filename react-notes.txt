@@ -1,3 +1,4 @@
+// Notes for 10,000 foot overview
 // Development Compile & serve
 npm run start 
 
@@ -22,7 +23,6 @@ npm run server
 
 
 
-
 React -
   - Facebook
   - [framework] or library?
@@ -42,29 +42,31 @@ React -
 
   Libraries - jQuery, lodash
 
-Components can be crteated with Classes or Functions
-Function components with Hooks
+Components can be created with Classes or Function components with Hooks
 
 create-react-app
 
 Components
  - state (open, closed), data, app state, global state (context api or Redux)  
- - prior to 16.8 - functions were "dumb components" - couldn't hold state, 167.8 enabled hooks which enable state
- - current version: 
- -  
+ - prior to 16.8 - functions were "dumb components" - couldn't hold state, 16.8 enabled hooks which enable state
+ - current version: 18
+ - Common Hooks: useState, useEffect 
 
+At time of build
  npm v18
  react v18
  angular v13
 
 ES7 React library
+
+Shortcuts
 rafc - react function 
+rafce - react function with export
 
 JSX - interpolated JS in HTML
+Rules particular to React
 class - className
 for - htmlFor
-has to reurn single root element
+has to rurn single root element
 no longer need: import React;
 
-* in line styles *
-<h1 style={{ color: 'red', backgroundColor: 'beige' }}>{title}</h1>
