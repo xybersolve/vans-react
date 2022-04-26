@@ -23,3 +23,5 @@ $ serve -s build -p 8000
 ##### Should Open Browser at App Address (either way) 
 - (OSX) In seperate terminal: $ open http://localhost:8000 
 - Open browser & go to: http://localhost:8000
+
+[Flowing Van](github.com/xybersolve/vans-react/images/Flowing-Van.jpg)
