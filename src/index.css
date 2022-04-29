@@ -118,3 +118,11 @@ h1 {
   align-items: center;
   justify-content: space-between;
 }
+.taskInfo {
+  text-align: center;
+  font-size: .85em; 
+  color: blue;
+  margin-bottom: 15px; 
+  margin-top: 5px;
+}
+
